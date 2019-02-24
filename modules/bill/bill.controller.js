@@ -46,7 +46,7 @@ let addBill = (req, res) => {
         else {
             client.messages
                 .create({
-                    body: '!!!! Testing !!!! Your order information Ref#: ' + data._id + ' Name: ' + req.body.customerName + ' From uBreakiFix © Kaene Soft, Inc.',
+                    body: '!!!! Testing !!!! Your order information Ref#: ' + data._id + ' Name: ' + req.body.customerName + '. From uBreakiFix © Kaene Soft, Inc.',
                     from: '+17123508797',
                     to: '+1' + req.body.phoneNumber,
                     // 4027130782
@@ -74,7 +74,7 @@ let updateBill = (req, res) => {
         else {
             client.messages
                 .create({
-                    body: '!!!! Testing !!!! Your order information updated Ref#: ' + data._id + ' Name: ' + req.body.customerName + ' Order Status: ' + req.body.status + ' From uBreakiFix © Kaene Soft, Inc.',
+                    body: '!!!! Testing !!!! Your order information updated Ref#: ' + data._id + ' Name: ' + req.body.customerName + ' Order Status: ' + req.body.status + '. From uBreakiFix © Kaene Soft, Inc.',
                     from: '+17123508797',
                     to: '+1' + req.body.phoneNumber,
                     // 4027130782
