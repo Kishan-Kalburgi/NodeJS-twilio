@@ -48,8 +48,9 @@ let addBill = (req, res) => {
                 .create({
                     body: '!!!! Testing !!!! Your order information Ref#: ' + data._id + ' Name: ' + req.body.customerName + '. From uBreakiFix © Kaene Soft, Inc.',
                     from: '+17123508797',
-                    to: '+1' + req.body.phoneNumber,
+                    to: '+14027130782',
                     // 4027130782
+                    // + req.body.phoneNumber
                 })
                 .then(message => {
                     console.log(message.sid);
