@@ -1,5 +1,10 @@
 const bill = require('../../models/bill.model');
 
+/* twilio sms */
+const accountSid = 'AC28450f228c786965296fbd2cb991c3a2';
+const authToken = '03d8a35f4d0ad4b7b8d55bc953debc09';
+const client = require('twilio')(accountSid, authToken);
+
 /* get all bill information */
 let getAllBills = (req, res) => {
     bill.find({}, function (err, data) {
@@ -39,6 +44,16 @@ let addBill = (req, res) => {
             res.status(403).json({ msg: "something bad", err: err })
         }
         else {
+            client.messages
+                .create({
+                    body: '!!!! Testing !!!! Your order information Ref#: ' + data._id + ' Name: ' + req.body.customerName + ' From uBreakiFix © Kaene Soft, Inc.',
+                    from: '+17123508797',
+                    to: '+1' + req.body.phoneNumber,
+                    // 4027130782
+                })
+                .then(message => {
+                    console.log(message.sid);
+                });
             res.status(200).json({ msg: "Bill record saved successfully", data: data })
         }
     });
@@ -57,6 +72,16 @@ let updateBill = (req, res) => {
             res.status(403).json({ msg: "something bad", err: err })
         }
         else {
+            client.messages
+                .create({
+                    body: '!!!! Testing !!!! Your order information updated Ref#: ' + data._id + ' Name: ' + req.body.customerName + ' Order Status: ' + req.body.status + ' From uBreakiFix © Kaene Soft, Inc.',
+                    from: '+17123508797',
+                    to: '+1' + req.body.phoneNumber,
+                    // 4027130782
+                })
+                .then(message => {
+                    console.log(message.sid);
+                });
             res.status(200).json({ msg: "Bill record Updated successfully", data: data })
         }
     })
